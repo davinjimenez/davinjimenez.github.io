@@ -1,8 +1,11 @@
-
-    
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Davin Jimenez </title> 
+       
       <style type="text/css">
             body {
-                background: rgb(125, 198, 205);
+                background: rgb(88, 88, 88);
                 color: rgb(45, 45, 45);
                 padding: 10px;
                 font-family: arial;
@@ -19,7 +22,7 @@
     
             /* navigation menu */
             nav {
-                background: rgb(239, 80, 41);
+                background: rgb(206, 203, 203);
                 margin: 0 auto;
                 display: flex;
                 padding: 10px;
@@ -44,87 +47,64 @@
     
             /* main container area beneath menu */
             main {
-                background: rgb(245, 238, 219);
+                background: rgb(238, 238, 238);
                 display: flex;
             }
             .content {
                 flex: 1;
                 padding: 15px;
             }
+
+            /* portfolio styles */
+            .content h1 {
+                color: black;
+            }
+
+            #portfolio {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+            #portfolio li {
+                background: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+
+            #portfolio li:hover {
+                background: #eee;
+            } 
+
+            #portfolio a {
+                text-decoration: none;
+                color: #454545;
+            }
         </style>
-
-/* portfolio styles */
-.content h1 {
-    color: black;
-}
-
-#portfolio {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#portfolio li {
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-#portfolio li:hover {
-    background: #eee;
-} 
-
-#portfolio a {
-    text-decoration: none;
-    color: #454545;
-}
-
-
-
-
-
-
-
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title> Davin Jimenez </title> 
     </head>
-
-    <body>
-      <div id="all-contents">
-      
-      </div>
-    </body>
-</html>
-
-
-<div id="all-contents">
-    <nav>
-        
-        <h1> Davin Jimenez </h1>
-        <ul id="nav-ul">
-            <li class="nav-li">
-              <a class="nav-a" href="index.html">Home</a>
-            </li>
-            <li class="nav-li">
-              <a class="nav-a" href="portfolio.html">Portfolio</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-       
-<nav>
-    <-- nav stuff here-->
-</nav>
+    <div id="all-contents">
+        <nav>
+            <h1> Davin Jimenez </h1>
+            <ul id="nav-ul">
+                <li class="nav-li">
+                  <a class="nav-a" href="index.html">Home</a>
+                </li>
+                <li class="nav-li">
+                  <a class="nav-a" href="portfolio.html">Portfolio</a>
+                </li>
+            </ul>
+        </nav>
 <main>
    <div class="content">
-   <hi>Portfolio</hi>
-   <ul> id="Portfolio"> 
-    <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
-    <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
-    <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
+        <h1>Portfolio</h1>
+        <ul id="portfolio"> 
+            <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
+            <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
+            <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
 
-   </ul>
-   </div>
-   </main>
+        </ul>
+    </div>
+  </main>
+</div>      
+</body>    
+</html>
