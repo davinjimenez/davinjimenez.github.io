@@ -6,9 +6,10 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 80px;
-			height: 80px;
-			background-color: teal;
+			width: 70px;
+			height: 70px;
+			background-color : rgb(223, 32, 32);
+			background-image url()
 			font-size: 200%;
 			text-align: center;
 			display: block;
@@ -47,10 +48,11 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(PositionX) {
-				box.css("left", PositionX);
+			function moveBoxTo(PositionX ) {
+				box.css("left",PositionX);
+				
 			}
-
+		
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
@@ -64,6 +66,15 @@
 			var PositionX = 0;
             var points = 1;
 			var speed = 10;
+			var positionX = 0;
+            var PositionY = 0;
+            var PositionY;
+			var speedY;
+			var boardHeight = jQuery(window).height();
+			var randNum = Math.random() * 100;
+
+
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -73,7 +84,29 @@
 		     /* Your Function Call here*/
              moveBoxTo(PositionX)
 			 PositionX = PositionX + speed;
-			 
+			 if (PositionX > boardWidth){
+				 speed = speed *-1;
+			} 
+		     if (PositionX < 0){
+				 speed = -speed;
+			 }
+			 if (PositionY > boardWidth){
+				 speed = speed *-1;
+			 }
+			 if (PositionY < 0){
+				 speed = -speed;
+			 }
+             moveBoxTo(PositionX , PositionY);
+
+
+
+
+
+
+
+
+
+
 			};
 
 			/* 
