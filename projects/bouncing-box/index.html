@@ -48,9 +48,9 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(PositionX ) {
-				box.css("left",PositionX);
-				
+			function moveBoxTo(newPositionX , newPositionY ) {
+				box.css("left",newPositionX);
+				box.css('top' , newPositionY);
 			}
 		
 			// changes the text displayed on the Box
@@ -63,15 +63,13 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			var PositionX = 0;
+			var positionX = 0;
             var points = 1;
 			var speed = 10;
-			var positionX = 0;
-            var PositionY = 0;
-            var PositionY;
-			var speedY;
+		    var positionY = 0;
+            var speedY = 0;
 			var boardHeight = jQuery(window).height();
-			var randNum = Math.random() * 100;
+			
 
 
 
@@ -82,32 +80,24 @@
 			*/
 			function update() {
 		     /* Your Function Call here*/
-             moveBoxTo(PositionX)
-			 PositionX = PositionX + speed;
-			 if (PositionX > boardWidth){
+             moveBoxTo(positionX, positionY);
+			 positionX = positionX + speed;
+             positionY = positionY + speedY;
+			 if (positionX > boardWidth){
 				 speed = speed *-1;
 			} 
-		     if (PositionX < 0){
+		     if (positionX < 0){
 				 speed = -speed;
 			 }
-			 if (PositionY > boardWidth){
-				 speed = speed *-1;
+			 if (positionY > boardHeight){
+				 speedY = speedY *-1
 			 }
-			 if (PositionY < 0){
-				 speed = -speed;
+			 if (positionY < 0){
+				 speedY = -speedY;
 			 }
-             moveBoxTo(PositionX , PositionY);
-
-
-
-
-
-
-
-
-
-
-			};
+             
+             
+             };
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -115,10 +105,12 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				PositionX = 0;
+				positionX = 0;
               changeBoxText(points);
               points = points + 1;
 			  speed = speed + 3;
+			  speedY = speedY + 3;
+			
 			};
 		})();
 	</script>
