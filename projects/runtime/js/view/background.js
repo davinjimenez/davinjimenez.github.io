@@ -18,16 +18,19 @@ var background = function (window) {
         }
         
         // useful variables
-        var canvasWidth = app.canvas.width;
-        var canvasHeight = app.canvas.height;
-        var groundY = ground.y;
+            var canvasWidth = app.canvas.width;
+            var canvasHeight = app.canvas.height;
+            var groundY = ground.y;
         
         // container which will be returned
         var background;
         
         // ANIMATION VARIABLES HERE:
-        
-     
+            var tree;
+            var buildings = [];
+
+
+
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
@@ -36,17 +39,47 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,groundY,'white');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
+            var moon = draw.bitmap('img/moon.png');
+            moon.x = canvasWidth - 1500;
+            moon.y = groundY - 376;
+            moon.scaleX = 0.5;
+            moon.scaleY = 0.5;
+            background.addChild(moon);
             
+            //this needs to be in a loop! [Scheller]
+            var circle = draw.circle(10,'white', 'LightGray', 2);
+            circle.x = canvasWidth*Math.random();
+            circle.y = groundY*Math.random();
+            background.addChild(circle);
+
+
+
+
+
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            for (var i = 0; i < 5; i++) {
+                var buildingHeight = 300;   // declare a variable called buildingheight that holds heght of the building in pixel
+                var building = draw.rect(75, buildingHeight,'LightGray', 'Black' , 1);  // declares a variable called building
+                building.x = 200*i;  //adds 200 pixels to the x value everytime loop runs
+                building.y = groundY-buildingHeight;   // sets the building's y position by subtracting the height of building from groundY
+                background.addChild(building);    // adds the building to the background so we can see it
+                buildings.push(building);    // pushing buildings data to buildings array and store it as an index
+            }
+
+
+
             
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap('img/tree.png');
+            tree.x = canvasWidth - 300;
+            tree.y = groundY - 235;
+            background.addChild(tree);
+
             
         } // end of render function - DO NOT DELETE
         
@@ -61,9 +94,21 @@ var background = function (window) {
             
             // TODO 4: Part 2 - Move the tree!
             
+            tree.x = tree.x - 5; // takes the current value of tree.x and subtracts 1 pixel 60/second to move the tree
+            
+            if(tree.x < - 200) {
+                tree.x = canvasWidth;
+            }
+
+
             
             // TODO 5: Part 2 - Parallax
-            
+            for (var i = 0; i < buildings.length; i++){
+                buildings[i].x = buildings[i].x - 0.5;
+                if (buildings[i].x < 0 ) {
+                 buildings[i].x = canvasWidth;
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         

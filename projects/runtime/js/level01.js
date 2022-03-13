@@ -16,9 +16,9 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
-                { "type": "sawblade", "x": 600, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
+                { "type": "sawblade", "x": 400, "y": groundY- 100},
+                { "type": "sawblade", "x": 600, "y": groundY- 100 },
+                { "type": "sawblade", "x": 900, "y": groundY- 100 },
             ]
         };
         window.levelData = levelData;
@@ -27,10 +27,58 @@ var level01 = function (window) {
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
+        
+    function createSawBlade(x,y) {
+        var hitZoneSize = 25; //creates the size of the Hitzone
+        var damageFromObstacle = 10; //setting how much damage the object will inflict
+        var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle itself
+        sawBladeHitZone.x = x; //the X value of the hitzone
+        sawBladeHitZone.y = y; //the Y value of the hitzone
+        game.addGameItem(sawBladeHitZone); //adds the hitzone to the game
+        var obstacleImage = draw.bitmap('img/sawblade.png'); //draws in the image on the screen 
+        sawBladeHitZone.addChild(obstacleImage); //adds image to the hitzone so we can see it
+        obstacleImage.x = -25; //lines up the x image with the hitzone 
+        obstacleImage.y = -25; //lines up the y image with the hitzone
+        sawBladeHitZone.rotationalVelocity = 5;
+        }
+        
+            createSawBlade(400,345);
+            createSawBlade(400,345);
+            createSawBlade(400,345);
 
-        
-        
-        
+
+
+
+    
+      
+function createEnemy (x,y) {
+    var enemy = game.createGameItem('enemy',25); //creates enemy item and stores it in a value
+    var redSquare = draw.rect(50,50,'red'); //draws a redSquare and stores it in variable redSquare
+    redSquare.x = -25; //allign the square with the hitzone x
+    redSquare.y = -25; 
+    enemy.addChild(redSquare); 
+    enemy.x = x;
+    enemy.y = y;
+    game.addGameItem(enemy);
+    enemy.velocityX = -1;
+    enemy.rotationalVelocity = 10;
+    enemy.onPlayerCollision = function() {
+        game.changeIntegrity(-90) //decreases your health
+        console.log('The enemy has hit Halle');
+        enemy.shrink();
+    };
+    
+//this function detects if the projectile collides with Halle and it will increase the score and shrink the enemy
+    enemy.onProjectileCollision = function(){
+        game.increaseScore(10);
+        enemy.shrink();
+    };
+    }
+      createEnemy(400, groundY - 50);
+      createEnemy(600, groundY - 50);
+      createEnemy(800, groundY - 50);
+
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };
