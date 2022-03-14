@@ -16,10 +16,15 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY- 100},
-                { "type": "sawblade", "x": 600, "y": groundY- 100 },
-                { "type": "sawblade", "x": 900, "y": groundY- 100 },
+                { "type": "sawblade", "x": 400, "y": groundY- 50},
+                { "type": "sawblade", "x": 600, "y": groundY- 50 },
+                { "type": "sawblade", "x": 800, "y": groundY- 50 },
+                
+                { "type": "enemy", "x": 400, "y": groundY- 50},
+                { "type": "enemy", "x": 600, "y": groundY- 50 },
+                { "type": "enemy", "x": 800, "y": groundY- 50 },
             ]
+
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
@@ -42,16 +47,16 @@ var level01 = function (window) {
         sawBladeHitZone.rotationalVelocity = 5;
         }
         
+            
             createSawBlade(400,345);
-            createSawBlade(400,345);
-            createSawBlade(400,345);
-
+            createSawBlade(600,345);
+            createSawBlade(800,345);
 
 
 
     
       
-function createEnemy (x,y) {
+  function createEnemy (x,y) {
     var enemy = game.createGameItem('enemy',25); //creates enemy item and stores it in a value
     var redSquare = draw.rect(50,50,'red'); //draws a redSquare and stores it in variable redSquare
     redSquare.x = -25; //allign the square with the hitzone x
@@ -73,10 +78,20 @@ function createEnemy (x,y) {
         game.increaseScore(10);
         enemy.shrink();
     };
-    }
-      createEnemy(400, groundY - 50);
-      createEnemy(600, groundY - 50);
-      createEnemy(800, groundY - 50);
+            
+}
+    
+        for (var i = 0; i < levelData.gameItems.length; i++) {
+        var gameItem = levelData.gameItems[i];
+     
+     if (gameItem.type === "sawBlade"){
+       createsawBlade(gameItem.x , gameItem.y);
+     }
+        if (gameItem.type === "enemy"){
+        createEnemy(gameItem.x ,gameItem.y);
+     }
+
+     }
 
 
         // DO NOT EDIT CODE BELOW HERE
