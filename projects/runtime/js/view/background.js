@@ -39,24 +39,27 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'white');
+            var backgroundFill = draw.rect(canvasWidth,groundY,'black');
             background.addChild(backgroundFill);
-            
+          
+
+
             // TODO: 3 - Add a moon and starfield
             var moon = draw.bitmap('img/moon.png');
             moon.x = canvasWidth - 1500;
             moon.y = groundY - 376;
             moon.scaleX = 0.5;
             moon.scaleY = 0.5;
-            background.addChild(moon);
-            
-            //this needs to be in a loop! [Scheller]
-            var circle = draw.circle(10,'white', 'LightGray', 2);
-            circle.x = canvasWidth*Math.random();
-            circle.y = groundY*Math.random();
-            background.addChild(circle);
-
-
+            background.addChild(moon);  
+     
+           // this for loop determines how many stars you want to put on your game                                
+        for (var i = 0; i <= 100; i++) { 
+            var circle = draw.circle(10,'white', 'LightGray', 2); //this code is a variable to tell the loop what circles you want
+            circle.x = canvasWidth*Math.random(); //this determines the x position of the circles
+            circle.y = groundY*Math.random(); // this determines the y position of the circles
+            background.addChild(circle); // this code draws the circles
+             
+         }
 
 
 
@@ -64,7 +67,7 @@ var background = function (window) {
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) {
                 var buildingHeight = 300;   // declare a variable called buildingheight that holds heght of the building in pixel
-                var building = draw.rect(75, buildingHeight,'LightGray', 'Black' , 1);  // declares a variable called building
+                var building = draw.rect(75, buildingHeight,'gray', 'Black' , 1);  // declares a variable called building
                 building.x = 200*i;  //adds 200 pixels to the x value everytime loop runs
                 building.y = groundY-buildingHeight;   // sets the building's y position by subtracting the height of building from groundY
                 background.addChild(building);    // adds the building to the background so we can see it

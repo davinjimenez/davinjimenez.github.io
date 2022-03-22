@@ -34,7 +34,7 @@ var init = function (window) {
     // TODO 2 : add background
     var background = opspark.makeBackground(app,ground);
     view.addChild(background);
-
+    
 
 
 
