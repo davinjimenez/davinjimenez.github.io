@@ -16,17 +16,17 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 900, "y": groundY- 100},
-                { "type": "sawblade", "x": 700, "y": groundY- 100 },
+                { "type": "sawblade", "x": 300, "y": groundY- 100},
+                { "type": "sawblade", "x": 600, "y": groundY- 100 },
                 { "type": "sawblade", "x": 1000, "y": groundY- 100 },
                 
                 
                 { "type": "enemy", "x": 400, "y": groundY- 50},
-                { "type": "enemy", "x": 1000, "y": groundY- 50 },
+                { "type": "enemy", "x": 900, "y": groundY- 50 },
                 { "type": "enemy", "x": 600, "y": groundY- 50 },
 
                 { "type": "reward", "x": 500, "y": groundY- 50},
-                { "type": "reward", "x": 900, "y": groundY- 50 },
+                { "type": "reward", "x": 800, "y": groundY- 50 },
                 { "type": "reward", "x": 700, "y": groundY- 50 },
             
             ]
@@ -94,7 +94,7 @@ var level01 = function (window) {
         reward.rotationalVelocity = 10;
     
     reward.onPlayerCollision = function() {
-        game.changeIntegrity(-90) //increases your health
+        game.changeIntegrity(90) //increases your health
         console.log('The reward has hit halle');
         reward.shrink();
     }
