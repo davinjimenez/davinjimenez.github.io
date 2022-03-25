@@ -59,24 +59,24 @@ var level01 = function (window) {
     var enemy = game.createGameItem('enemy',25); //creates enemy item and stores it in a value
     var redSquare = draw.rect(50,50,'red'); //draws a redSquare and stores it in variable redSquare
     redSquare.x = -25; //allign the square with the hitzone x
-    redSquare.y = -25; 
-    enemy.addChild(redSquare); 
+    redSquare.y = -25; //allign the square with hitzone y
+    enemy.addChild(redSquare); //adds the enemy
     enemy.x = x;
     enemy.y = y;
     game.addGameItem(enemy);
     enemy.velocityX = -1;
-    enemy.rotationalVelocity = 10;
+    enemy.rotationalVelocity = 10; //determines how the square rotates
     
     enemy.onPlayerCollision = function() {
         game.changeIntegrity(-90) //decreases your health
         console.log('The enemy has hit Halle');
-        enemy.shrink();
+        enemy.shrink(); 
     };
     
-//this function detects if the projectile collides with Halle and it will increase the score and shrink the enemy
+    //this function detects if the projectile collides with Halle and it will increase the score and shrink the enemy
     enemy.onProjectileCollision = function(){
-        game.increaseScore(10);
-        enemy.shrink();
+        game.increaseScore(10); //this code increases the score
+        enemy.shrink(); // this code shrinks the enemy
     };
             
   }
@@ -85,18 +85,18 @@ var level01 = function (window) {
         var reward = game.createGameItem('reward',25); //creates reward item and stores it in a value
         var blueSquare = draw.rect(50,50,'blue'); //draws a redSquare and stores it in variable redSquare
         blueSquare.x = -25; //allign the square with the hitzone x
-        blueSquare.y = -25; 
-        reward.addChild(blueSquare); 
+        blueSquare.y = -25; //align the square with the hitzone y
+        reward.addChild(blueSquare); //adds the reward
         reward.x = x;
         reward.y = y;
         game.addGameItem(reward);
         reward.velocityX = -1;
-        reward.rotationalVelocity = 10;
+        reward.rotationalVelocity = 10; //determines how the square rotates
     
     reward.onPlayerCollision = function() {
         game.changeIntegrity(90) //increases your health
         console.log('The reward has hit halle');
-        reward.shrink();
+        reward.shrink(); //this shrinks the reward when it is hit
     }
   }
 
