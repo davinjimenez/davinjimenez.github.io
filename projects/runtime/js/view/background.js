@@ -45,7 +45,7 @@ var background = function (window) {
 
 
             // TODO: 3 - Add a moon and starfield
-            var moon = draw.bitmap('img/moon.png');
+            var moon = draw.bitmap('img/in-moon_metal.jpg');
             moon.x = canvasWidth - 1500;
             moon.y = groundY - 376;
             moon.scaleX = 0.5;
@@ -67,7 +67,7 @@ var background = function (window) {
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) {
                 var buildingHeight = 400;   // declare a variable called buildingheight that holds heght of the building in pixel
-                var building = draw.rect(80, buildingHeight,'gray', 'Black' , 1);  // declares a variable called building
+                var building = draw.rect(80, buildingHeight,'gray', 'black' , 1);  // declares a variable called building
                 building.x = 200*i;  //adds 200 pixels to the x value everytime loop runs
                 building.y = groundY-buildingHeight;   // sets the building's y position by subtracting the height of building from groundY
                 background.addChild(building);    // adds the building to the background so we can see it
