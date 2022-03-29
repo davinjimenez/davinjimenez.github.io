@@ -17,17 +17,17 @@ var level01 = function (window) {
             "speed": -3,
             "gameItems": [
                 { "type": "sawblade", "x": 300, "y": groundY- 100},
-                { "type": "sawblade", "x": 600, "y": groundY- 100 },
-                { "type": "sawblade", "x": 1000, "y": groundY- 100 },
+                { "type": "sawblade", "x": 700, "y": groundY- 100 },
+                { "type": "sawblade", "x": 1800, "y": groundY- 100 },
                 
                 
                 { "type": "enemy", "x": 400, "y": groundY- 50},
-                { "type": "enemy", "x": 900, "y": groundY- 50 },
-                { "type": "enemy", "x": 600, "y": groundY- 50 },
+                { "type": "enemy", "x": 1200, "y": groundY- 50 },
+                { "type": "enemy", "x": 1000, "y": groundY- 50 },
 
-                { "type": "reward", "x": 500, "y": groundY- 50},
+                { "type": "reward", "x": 1400, "y": groundY- 50},
                 { "type": "reward", "x": 800, "y": groundY- 50 },
-                { "type": "reward", "x": 700, "y": groundY- 50 },
+                { "type": "reward", "x": 500, "y": groundY- 50 },
             
             ]
 
@@ -51,13 +51,16 @@ var level01 = function (window) {
         obstacleImage.x = -25; //lines up the x image with the hitzone 
         obstacleImage.y = -25; //lines up the y image with the hitzone
         sawBladeHitZone.rotationalVelocity = 5;
+          
+    
+    
     }
     
 
       
   function createEnemy (x,y) {
-    var enemy = game.createGameItem('enemy',25); //creates enemy item and stores it in a value
-    var redSquare = draw.rect(50,50,'red'); //draws a redSquare and stores it in variable redSquare
+    var enemy = game.createGameItem('enemy',5); //creates enemy item and stores it in a value
+    var redSquare = draw.bitmap('img/fly enemy part 3.jpg'); //draws a redSquare and stores it in variable redSquare
     redSquare.x = -25; //allign the square with the hitzone x
     redSquare.y = -25; //allign the square with hitzone y
     enemy.addChild(redSquare); //adds the enemy
@@ -65,7 +68,7 @@ var level01 = function (window) {
     enemy.y = y;
     game.addGameItem(enemy);
     enemy.velocityX = -1;
-    enemy.rotationalVelocity = 10; //determines how the square rotates
+    enemy.rotationalVelocity = 0; //determines how the square rotates
     
     enemy.onPlayerCollision = function() {
         game.changeIntegrity(-90) //decreases your health
@@ -75,7 +78,7 @@ var level01 = function (window) {
     
     //this function detects if the projectile collides with Halle and it will increase the score and shrink the enemy
     enemy.onProjectileCollision = function(){
-        game.increaseScore(10); //this code increases the score
+        game.increaseScore(30); //this code increases the score
         enemy.shrink(); // this code shrinks the enemy
     };
             
@@ -83,7 +86,7 @@ var level01 = function (window) {
       
   function createReward (x,y) {
         var reward = game.createGameItem('reward',25); //creates reward item and stores it in a value
-        var blueSquare = draw.rect(50,50,'blue'); //draws a redSquare and stores it in variable redSquare
+        var blueSquare = draw.bitmap('img/coin image.jpg'); //draws a redSquare and stores it in variable redSquare
         blueSquare.x = -25; //allign the square with the hitzone x
         blueSquare.y = -25; //align the square with the hitzone y
         reward.addChild(blueSquare); //adds the reward
@@ -91,7 +94,7 @@ var level01 = function (window) {
         reward.y = y;
         game.addGameItem(reward);
         reward.velocityX = -1;
-        reward.rotationalVelocity = 10; //determines how the square rotates
+        reward.rotationalVelocity = 0; //determines how the square rotates
     
     reward.onPlayerCollision = function() {
         game.changeIntegrity(90) //increases your health
