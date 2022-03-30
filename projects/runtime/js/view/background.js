@@ -78,12 +78,13 @@ var background = function (window) {
 
             
             // TODO 4: Part 1 - Add a tree
-            tree = draw.bitmap('img/tree.png');
+            tree = draw.bitmap('img/fly enemy part 4(1).png');
             tree.x = canvasWidth - 300;
             tree.y = groundY - 235;
             background.addChild(tree);
-
             
+            
+
         } // end of render function - DO NOT DELETE
         
         

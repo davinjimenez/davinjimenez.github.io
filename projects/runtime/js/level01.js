@@ -22,7 +22,7 @@ var level01 = function (window) {
                 
                 
                 { "type": "enemy", "x": 400, "y": groundY- 50},
-                { "type": "enemy", "x": 1200, "y": groundY- 50 },
+                { "type": "enemy", "x": 1700, "y": groundY- 50 },
                 { "type": "enemy", "x": 1000, "y": groundY- 50 },
 
                 { "type": "reward", "x": 1400, "y": groundY- 50},
@@ -60,7 +60,7 @@ var level01 = function (window) {
       
   function createEnemy (x,y) {
     var enemy = game.createGameItem('enemy',5); //creates enemy item and stores it in a value
-    var redSquare = draw.bitmap('img/fly enemy part 3.jpg'); //draws a redSquare and stores it in variable redSquare
+    var redSquare = draw.bitmap('img/fly enemy part 4(1).png'); //draws a redSquare and stores it in variable redSquare
     redSquare.x = -25; //allign the square with the hitzone x
     redSquare.y = -25; //allign the square with hitzone y
     enemy.addChild(redSquare); //adds the enemy
@@ -86,7 +86,7 @@ var level01 = function (window) {
       
   function createReward (x,y) {
         var reward = game.createGameItem('reward',25); //creates reward item and stores it in a value
-        var blueSquare = draw.bitmap('img/coin image.jpg'); //draws a redSquare and stores it in variable redSquare
+        var blueSquare = draw.bitmap('img/coin image 1.png'); //draws a redSquare and stores it in variable redSquare
         blueSquare.x = -25; //allign the square with the hitzone x
         blueSquare.y = -25; //align the square with the hitzone y
         reward.addChild(blueSquare); //adds the reward
@@ -96,12 +96,16 @@ var level01 = function (window) {
         reward.velocityX = -1;
         reward.rotationalVelocity = 0; //determines how the square rotates
     
+     
     reward.onPlayerCollision = function() {
         game.changeIntegrity(90) //increases your health
         console.log('The reward has hit halle');
         reward.shrink(); //this shrinks the reward when it is hit
+    
+    
     }
-  }
+ 
+ }
 
 
 
