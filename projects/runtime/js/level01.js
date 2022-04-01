@@ -34,7 +34,7 @@ var level01 = function (window) {
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(true);
+        game.setDebugMode(false);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
@@ -50,14 +50,14 @@ var level01 = function (window) {
         sawBladeHitZone.addChild(obstacleImage); //adds image to the hitzone so we can see it
         obstacleImage.x = -25; //lines up the x image with the hitzone 
         obstacleImage.y = -25; //lines up the y image with the hitzone
-        sawBladeHitZone.rotationalVelocity = 5;
+        sawBladeHitZone.rotationalVelocity = 10;
           
     
     
     }
     
 
-      
+   // this function creates the enemy    
   function createEnemy (x,y) {
     var enemy = game.createGameItem('enemy',5); //creates enemy item and stores it in a value
     var redSquare = draw.bitmap('img/fly enemy part 4(1).png'); //draws a redSquare and stores it in variable redSquare
@@ -83,7 +83,7 @@ var level01 = function (window) {
     };
             
   }
-      
+    //this function creates the reward
   function createReward (x,y) {
         var reward = game.createGameItem('reward',25); //creates reward item and stores it in a value
         var blueSquare = draw.bitmap('img/coin image 1.png'); //draws a redSquare and stores it in variable redSquare
@@ -92,6 +92,8 @@ var level01 = function (window) {
         reward.addChild(blueSquare); //adds the reward
         reward.x = x;
         reward.y = y;
+        reward.scaleX = 0.50; //this scales the image of the reward for X
+        reward.scaleY = 0.50; //this scales the image of the reward for Y
         game.addGameItem(reward);
         reward.velocityX = -1;
         reward.rotationalVelocity = 0; //determines how the square rotates
