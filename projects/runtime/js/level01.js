@@ -16,16 +16,17 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 300, "y": groundY- 100},
-                { "type": "sawblade", "x": 700, "y": groundY- 100 },
-                { "type": "sawblade", "x": 1800, "y": groundY- 100 },
+                { "type": "sawblade", "x": 300, "y": groundY- 100  },
+                { "type": "sawblade", "x": 700, "y": groundY- 100  },
+                { "type": "sawblade", "x": 1800,"y": groundY- 100  },
                 
                 
-                { "type": "enemy", "x": 400, "y": groundY- 50},
+                { "type": "enemy", "x": 400, "y": groundY-  50 },
                 { "type": "enemy", "x": 1700, "y": groundY- 50 },
                 { "type": "enemy", "x": 1000, "y": groundY- 50 },
 
-                { "type": "reward", "x": 1400, "y": groundY- 50},
+
+                { "type": "reward", "x": 1400, "y":groundY- 50 },
                 { "type": "reward", "x": 800, "y": groundY- 50 },
                 { "type": "reward", "x": 500, "y": groundY- 50 },
             
@@ -34,7 +35,7 @@ var level01 = function (window) {
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(false);
+        game.setDebugMode(true);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
@@ -67,7 +68,7 @@ var level01 = function (window) {
     enemy.x = x;
     enemy.y = y;
     game.addGameItem(enemy);
-    enemy.velocityX = -1;
+    enemy.velocityX = -1; //this determines the velocity of scale X
     enemy.rotationalVelocity = 0; //determines how the square rotates
     
     enemy.onPlayerCollision = function() {
@@ -86,7 +87,7 @@ var level01 = function (window) {
     //this function creates the reward
   function createReward (x,y) {
         var reward = game.createGameItem('reward',25); //creates reward item and stores it in a value
-        var blueSquare = draw.bitmap('img/coin image 1.png'); //draws a redSquare and stores it in variable redSquare
+        var blueSquare = draw.bitmap('img/coin image 1.png'); //draws a redSquare and stores it in variable blueSquare
         blueSquare.x = -25; //allign the square with the hitzone x
         blueSquare.y = -25; //align the square with the hitzone y
         reward.addChild(blueSquare); //adds the reward
@@ -95,7 +96,7 @@ var level01 = function (window) {
         reward.scaleX = 0.50; //this scales the image of the reward for X
         reward.scaleY = 0.50; //this scales the image of the reward for Y
         game.addGameItem(reward);
-        reward.velocityX = -1;
+        reward.velocityX = -1; //this scales the velocity for X
         reward.rotationalVelocity = 0; //determines how the square rotates
     
      
