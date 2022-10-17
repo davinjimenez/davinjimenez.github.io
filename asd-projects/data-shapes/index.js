@@ -52,7 +52,7 @@ $(document).ready(function () {
          currentShape.goodBehavior = "bounce";
     } 
       else if (currentShape.color === "blue"){
-      currentShape.goodBehavior = "blank";
+      currentShape.goodBehavior = "blink";
     }
       else {
      currentShape.goodBehavior = "spin";
