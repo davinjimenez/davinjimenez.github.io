@@ -29,11 +29,16 @@ function runProgram(){
      "RIGHT": 39,
      "DOWN": 40,
   }
-   
+  //walker 1
   var positionX = 0;
   var positionY = 0;
   var speedX = 0;
   var speedY = 0;
+ 
+  var positionX2 = 0;
+  var positionY2 = 0;
+  var speedX2 = 0;
+  var speedY2 = 0;
  
 
 
@@ -48,10 +53,10 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
     repositionGameItem();
     redrawGameItem();
     handleBorder();
+
   }
   
   /* 
@@ -113,9 +118,13 @@ function runProgram(){
     if(positionY < 0){
       positionY = 0;
     }
+     
+    
 
 
-  }
+
+
+   }
 
 
 
@@ -129,7 +138,8 @@ function runProgram(){
     positionX += speedX;
     positionY += speedY;
    
-  
+   positionX2 += speedX2;
+   positionX2 += speedX2;
   
 }
   
@@ -137,6 +147,8 @@ function runProgram(){
     $("#walker").css("left", positionX); 
     $("#walker").css("top", positionY);
     
+    $("#walker2").css("left", positionX2);
+    $("#walker2").css("top", positionY2);
 }
   
   

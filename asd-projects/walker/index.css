@@ -20,3 +20,12 @@ body {
   left: 100px;  
   top: 100px;   
 }
+#walker2 {
+  background-color: rgb(231, 99, 23);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50px;
+  left: 70px;  
+  top: 70px;   
+}
