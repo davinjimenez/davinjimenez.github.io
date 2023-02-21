@@ -106,14 +106,14 @@ function runProgram(){
   }
   
    function handleBorder(){
-    if(positionX > BOARD_WIDTH -WALKER_WIDTH){
-         positionX = BOARD_WIDTH - WALKER_WIDTH;
+    if(positionX > BOARD_WIDTH -PADDLE_WIDTH){
+         positionX = BOARD_WIDTH - PADDLE_WIDTH;
     }
     if(positionX < 0){
       positionX = 0;
     }
-    if(positionY > BOARD_HEIGHT -WALKER_HEIGHT){
-      positionY = BOARD_HEIGHT - WALKER_HEIGHT;
+    if(positionY > BOARD_HEIGHT -PADDLE2_HEIGHT){
+      positionY = BOARD_HEIGHT - PADDLE2_HEIGHT;
     }
     if(positionY < 0){
       positionY = 0;
