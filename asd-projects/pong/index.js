@@ -81,7 +81,7 @@ function runProgram(){
     updateItem(paddleLeft);
     updateItem(paddleRight);
     updateItem(ball);
-   
+    paddleBoundary();
   }
   
   /* 
@@ -158,26 +158,41 @@ function runProgram(){
   //function that checks the boundaries of the right and left walls
       //ball doesn't bounce but it awards a point to the other player
       //ball resets in middle
- 
+       function wallCollision(){
+        if(ball > BOARD_HEIGHT){
+          speed = -speed;
+        }
+            
+        
+
+
+        
+       };
+
+
+
 
 
   //function that checks the boundaries for the paddles (top/bottom)
   function paddleBoundary(){
    
-      if(paddleRight.positionX > BOARD_WIDTH ){
-           paddleRight.positionX = BOARD_WIDTH;
-      }
-      if(paddleRight.positionX < 0){
-        paddleRight.positionX = 0;
-      }
-      if(paddleLeft.positionY > BOARD_HEIGHT ){
-        paddleLeftpositionY = BOARD_HEIGHT;
-      }
-      if(paddleLeft.positionY < 0){
-        paddleLpositionY = 0;
-      }
-       
-  }
+       if(paddleLeft.y > BOARD_HEIGHT - paddleLeft.h){
+       paddleLeft.y = BOARD_HEIGHT - paddleLeft.h;
+       }
+       if(paddleLeft.y < 0){
+        paddleLeft.y = 0;
+       }
+  
+       if(paddleRight.y > BOARD_HEIGHT - paddleRight.h){
+        paddleRight.y = BOARD_HEIGHT - paddleRight.h;
+       }
+       if(paddleRight.y < 0){
+         paddleRight.y = 0;
+       }
+   
+  
+  
+    }
   
 
    //function that will handle what happens when a player scores 
