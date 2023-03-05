@@ -21,9 +21,7 @@ function runProgram(){
         "S": 83,
         }
      
-//variables
-  var speedY = 0;
-  var speedX = 0;
+ 
 
 
  const BOARD_WIDTH = $('#board').width();
@@ -82,6 +80,8 @@ function runProgram(){
     updateItem(paddleRight);
     updateItem(ball);
     paddleBoundary();
+    wallCollision();
+    sideBoundary();
   }
   
   /* 
@@ -110,7 +110,7 @@ function runProgram(){
 
 //function that handles Keyup
 
- function handleKeyUp(){
+  function handleKeyUp(){
      if (event.which === KEY.UP) {
           paddleRight.speedY = 0;         
      }
@@ -126,7 +126,7 @@ function runProgram(){
       paddleLeft.speedY = 0;
            
     } 
-}
+  }
   
  
   ////////////////////////////////////////////////////////////////////////////////
@@ -149,8 +149,19 @@ function runProgram(){
   }
 
   //function that checks the boundaries of top and bottom walls
-       //ball changes direction
+  //ball changes direction
+ 
+  function wallCollision(){
+    if(ball.y > BOARD_HEIGHT){
+      ball.speedY = ball.speedY * -1;
+    }
+   
+    if(ball.y < 0){
+    ball.speedY = -ball.speedY;
+    }
     
+
+  };
 
 
 
@@ -158,16 +169,20 @@ function runProgram(){
   //function that checks the boundaries of the right and left walls
       //ball doesn't bounce but it awards a point to the other player
       //ball resets in middle
-       function wallCollision(){
-        if(ball > BOARD_HEIGHT){
-          speed = -speed;
-        }
-            
-        
+   function sideBoundary(){
+    
+    if(ball.x > BOARD_WIDTH){
+     ball.speedX = ball.speedX * -1;
+    }
+    
+    if(ball.x < 0){
+    ball.speedX = -ball.speedX;
+    }
+
+  }
 
 
-        
-       };
+
 
 
 
@@ -190,7 +205,7 @@ function runProgram(){
          paddleRight.y = 0;
        }
    
-  
+
   
     }
   
@@ -204,12 +219,14 @@ function runProgram(){
 
 
    //function that will handle winner instance
-
+   function gameWinner(){
+    
+   }
 
    //function that will display play again button when winner is determined
 
 
-   //do Collide function to determine if two objects have collided (copy/paste one we did in class)
+   //do Collide function to determine if two objects have collided 
      function doCollide(obj1, obj2) {
     
         obj1.leftX = obj1.x;
