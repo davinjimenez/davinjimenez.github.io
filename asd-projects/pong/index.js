@@ -24,14 +24,21 @@ function runProgram(){
  
 
 
+
+
+
+
+
+
+
+
  const BOARD_WIDTH = $('#board').width();
  const BOARD_HEIGHT = $('#board').height();
  const PADDLE_WIDTH = $("#paddleRight").width();
  const PADDLE_HEIGHT = $("#paddleRight").height();
  const PADDLE2_WIDTH = $("#paddleLeft").width();
  const PADDLE2_HEIGHT = $("#paddleLeft").height();
-
-
+ 
 
   // Game Item Objects
    
@@ -52,7 +59,9 @@ function runProgram(){
     var paddleLeft = GameItem(10, 200, 0, 0, '#paddleLeft');
     var paddleRight = GameItem(BOARD_WIDTH - 10 -$('#paddleRight').width(), 200 , 0, 0, '#paddleRight');
     var ball = GameItem(BOARD_WIDTH / 2, BOARD_HEIGHT / 2, (Math.random() > 0.5 ? -3 : 3), (Math.random() > 0.5 ? -3 : 3), '#ball');
-
+    var leftScore = 0;
+    var rightScore = 0;
+    
 
 
 
@@ -81,7 +90,9 @@ function runProgram(){
     updateItem(ball);
     paddleBoundary();
     wallCollision();
-    sideBoundary();
+    scoring();
+    displayScore();
+    resetBall();
   }
   
   /* 
@@ -154,12 +165,21 @@ function runProgram(){
   function wallCollision(){
     if(ball.y > BOARD_HEIGHT){
       ball.speedY = ball.speedY * -1;
-    }
-   
-    if(ball.y < 0){
-    ball.speedY = -ball.speedY;
-    }
-    
+     }
+     
+     if(ball.y < 0){
+     ball.speedY = -ball.speedY;
+     }
+     
+     if(ball.x > BOARD_WIDTH){
+      ball.speedX = ball.speedX * -1;
+     }
+     
+     if(ball.x < 0){
+     ball.speedX = -ball.speedX;
+     }
+     
+
 
   };
 
@@ -169,19 +189,22 @@ function runProgram(){
   //function that checks the boundaries of the right and left walls
       //ball doesn't bounce but it awards a point to the other player
       //ball resets in middle
-   function sideBoundary(){
+    function scoring(){
     
     if(ball.x > BOARD_WIDTH){
-     ball.speedX = ball.speedX * -1;
+      leftScore++;
     }
     
-    if(ball.x < 0){
-    ball.speedX = -ball.speedX;
-    }
+     else if(ball.x < 0){
+      rightScore++;
+     }
+  };
+
+  function resetBall(){
+
+   
 
   }
-
-
 
 
 
@@ -215,13 +238,15 @@ function runProgram(){
 
 
    //function that will display the score
+   function displayScore(){
+    $("#scorePaddleLeft").text(leftScore);
+    $("#scorePaddleRight").text(rightScore);
   
+   }
 
 
    //function that will handle winner instance
-   function gameWinner(){
-    
-   }
+   
 
    //function that will display play again button when winner is determined
 
@@ -242,6 +267,9 @@ function runProgram(){
     }
 
    //function that changes ball speed when it hits the paddle
+    
+
+
 
 
    //function that will handle what happens when the ball hits the paddle

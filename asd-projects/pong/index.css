@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(0, 0, 0);
 }
 
 #board {
@@ -12,7 +12,7 @@ body {
 }
 
 #paddleLeft {
-  background-color: teal;
+  background-color: rgb(63, 63, 65);
   width: 25px;
   height: 100px;
   position: absolute;
@@ -20,7 +20,7 @@ body {
   top: 150px;  
 }
   #paddleRight {
-    background-color: teal;
+    background-color: rgb(63, 63, 65);;
     width: 25px;
     height: 100px;
     position: absolute;
@@ -35,5 +35,17 @@ body {
     border-radius: 10px;
   }
 
-    
-    
+  #scorePaddleLeft {
+    font-size: 3vw;
+    color: white;
+    position: absolute;
+    left: 50px;
+    top: 10px;
+  }
+  #scorePaddleRight {
+    font-size: 3vw;
+    color: white;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+  }
