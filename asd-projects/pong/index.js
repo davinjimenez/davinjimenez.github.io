@@ -92,8 +92,8 @@ function runProgram(){
     wallCollision();
     scoring();
     displayScore();
-    resetBall();
-  }
+    hitPaddle();
+  } 
   
   /* 
   Called in response to events.
@@ -193,21 +193,28 @@ function runProgram(){
     
     if(ball.x > BOARD_WIDTH){
       leftScore++;
+      resetBall();
     }
     
      else if(ball.x < 0){
       rightScore++;
-     }
+      resetBall();
+    }
   };
 
   function resetBall(){
+    
+   ball.x = BOARD_WIDTH / 2;
+   ball.y = BOARD_HEIGHT / 2;
+   ball.speedX =  (Math.random() > 0.5 ? -3 : 3);
+   ball.speedY =  (Math.random() > 0.5 ? -3 : 3);
 
-   
+
 
   }
 
 
-
+  
 
 
 
@@ -252,22 +259,37 @@ function runProgram(){
 
 
    //do Collide function to determine if two objects have collided 
-     function doCollide(obj1, obj2) {
-    
-        obj1.leftX = obj1.x;
-        obj1.topY = obj1.y;
-        obj1.rightX = obj1.leftX + $(obj1.id).width();
-        obj1.bottomY = obj1.topY + $(obj1.id).height();
-      
-      
-        obj2.leftX = obj2.x;
-        obj2.topY = obj2.y;
-        obj2.rightX = obj2.leftX + $(obj2.id).width();
-        obj2.bottomY = obj2.topY + $(obj2.id).height();
+   function doCollide(obj1, obj2) {
+
+    obj1.leftX = obj1.x;
+    obj1.topY = obj1.y;
+    obj1.rightX = obj1.x + obj1.w;
+    obj1.bottomY = obj1.y + obj1.h;
+
+
+    obj2.leftX = obj2.x;
+    obj2.topY = obj2.y;
+    obj2.rightX = obj2.x + obj2.w;
+    obj2.bottomY = obj2.y + obj2.h;
+
+    if (obj1.leftX < obj2.rightX &&
+      obj1.rightX > obj2.leftX &&
+      obj1.bottomY > obj2.topY &&
+      obj1.topY < obj2.bottomY) {
+      return true;
     }
+    else {
+      return false;
+    }
+  }
+        
+
 
    //function that changes ball speed when it hits the paddle
+   
     
+  
+  
 
 
 
@@ -275,6 +297,25 @@ function runProgram(){
    //function that will handle what happens when the ball hits the paddle
        //ball changes direction
        //ball speeds up
+      
+     function hitPaddle(){
+        if (doCollide(ball, paddleLeft)) {
+           ball.speedX = ball.speedX * -1;
+        }
+
+
+        if(doCollide(ball, paddleRight)) {
+           ball.speedX = ball.speedX * -1;
+        }
+      
+      }   
+        
+      
+      
+      
+
+
+
 
 
   function endGame() {
